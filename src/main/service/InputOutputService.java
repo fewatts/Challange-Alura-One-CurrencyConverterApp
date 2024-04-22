@@ -1,15 +1,19 @@
 package service;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
- * Service class responsible for handling user input related to currency
+ * Service class responsible for handling user input/output related to currency
  * conversion.
  */
-public class CurrencyInputOutputService {
+public class InputOutputService {
 
     private static final Scanner scan = new Scanner(System.in);
+    private static final List<String> currencyCodes = Arrays.asList("BRL", "EUR", "USD", "GBP", "JPY", "CHF");
+    private static final List<String> currencySymbols = Arrays.asList("R$", "€", "US$", "£", "¥", "Fr");
 
     /**
      * Gets the user input for selecting the currency conversion option.
@@ -44,7 +48,8 @@ public class CurrencyInputOutputService {
                 if (option >= 1 && option <= 11)
                     validInput = true;
                 else
-                    System.out.println("Invalid option. Please enter a number between 1 and 10.");
+                    System.out.println("Invalid option. Please enter a");
+                    System.out.println("number between 1 and 10.");
 
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number.");
@@ -70,7 +75,8 @@ public class CurrencyInputOutputService {
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                        Currency Converter App. Ltd
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                    Type the value (positive number between 1 and 10,000,000):
+                    Type the value (positive number 
+                    between 1 and 10,000,000):
                        """);
             while (!scan.hasNextDouble()) {
                 System.out.println("Please enter a valid positive number:");
@@ -98,6 +104,88 @@ public class CurrencyInputOutputService {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Determines the base and target currencies based on the provided option.
+     * This method does not call any external API, it simply determines the order of
+     * currency conversion
+     * based on the given integer option.
+     *
+     * @param option The selected currency conversion option. Should be an integer
+     *               between 1 and 10.
+     * @return An array containing base and target currency codes and symbols.
+     *         Index 0 and 1 contain the base and target currency codes,
+     *         respectively.
+     *         Index 2 and 3 contain the base and target currency symbols,
+     *         respectively.
+     */
+    public static String[] determineBaseAndTarget(int option) {
+        String[] result = new String[4];
+        switch (option) {
+            case 1 -> {
+                result[0] = currencyCodes.get(0);
+                result[1] = currencyCodes.get(1);
+                result[2] = currencySymbols.get(0);
+                result[3] = currencySymbols.get(1);
+            }
+            case 2 -> {
+                result[0] = currencyCodes.get(0);
+                result[1] = currencyCodes.get(2);
+                result[2] = currencySymbols.get(0);
+                result[3] = currencySymbols.get(2);
+            }
+            case 3 -> {
+                result[0] = currencyCodes.get(0);
+                result[1] = currencyCodes.get(3);
+                result[2] = currencySymbols.get(0);
+                result[3] = currencySymbols.get(3);
+            }
+            case 4 -> {
+                result[0] = currencyCodes.get(0);
+                result[1] = currencyCodes.get(4);
+                result[2] = currencySymbols.get(0);
+                result[3] = currencySymbols.get(4);
+            }
+            case 5 -> {
+                result[0] = currencyCodes.get(0);
+                result[1] = currencyCodes.get(5);
+                result[2] = currencySymbols.get(0);
+                result[3] = currencySymbols.get(5);
+            }
+            case 6 -> {
+                result[0] = currencyCodes.get(1);
+                result[1] = currencyCodes.get(0);
+                result[2] = currencySymbols.get(1);
+                result[3] = currencySymbols.get(0);
+            }
+            case 7 -> {
+                result[0] = currencyCodes.get(2);
+                result[1] = currencyCodes.get(0);
+                result[2] = currencySymbols.get(2);
+                result[3] = currencySymbols.get(0);
+            }
+            case 8 -> {
+                result[0] = currencyCodes.get(3);
+                result[1] = currencyCodes.get(0);
+                result[2] = currencySymbols.get(3);
+                result[3] = currencySymbols.get(0);
+            }
+            case 9 -> {
+                result[0] = currencyCodes.get(4);
+                result[1] = currencyCodes.get(0);
+                result[2] = currencySymbols.get(4);
+                result[3] = currencySymbols.get(0);
+            }
+            case 10 -> {
+                result[0] = currencyCodes.get(5);
+                result[1] = currencyCodes.get(0);
+                result[2] = currencySymbols.get(5);
+                result[3] = currencySymbols.get(0);
+            }
+
+        }
+        return result;
     }
 
     /**

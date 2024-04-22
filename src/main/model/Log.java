@@ -2,6 +2,9 @@ package model;
 
 import java.time.LocalDateTime;
 
+/**
+ * The Log class represents a log entry for currency conversion.
+ */
 public class Log {
     private static int nextId = 1;
     private int id;
@@ -13,8 +16,19 @@ public class Log {
     private String targetCurrency;
     private String formattedResult;
 
+    /**
+     * Constructs a Log object with the specified parameters.
+     *
+     * @param currentDateTime   The date and time of the log entry.
+     * @param originalValue2    The original value before conversion.
+     * @param baseSymbol2       The symbol of the base currency.
+     * @param targetSymbol2     The symbol of the target currency.
+     * @param baseCurrency2     The name of the base currency.
+     * @param targetCurrency    The name of the target currency.
+     * @param formattedResult2  The formatted result after conversion.
+     */
     public Log(LocalDateTime currentDateTime, String originalValue2, String baseSymbol2, String targetSymbol2,
-            String baseCurrency2, String targetCurrency, String formattedResult2) {
+               String baseCurrency2, String targetCurrency, String formattedResult2) {
         this.id = nextId++;
         this.date = currentDateTime;
         this.originalValue = originalValue2;
@@ -25,38 +39,81 @@ public class Log {
         this.formattedResult = formattedResult2;
     }
 
+    /**
+     * Gets the ID of the log entry.
+     *
+     * @return The ID of the log entry.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Gets the date and time of the log entry.
+     *
+     * @return The date and time of the log entry.
+     */
     public LocalDateTime getDate() {
         return date;
     }
 
+    /**
+     * Gets the original value before conversion.
+     *
+     * @return The original value before conversion.
+     */
     public String getOriginalValue() {
         return originalValue;
     }
 
+    /**
+     * Gets the symbol of the base currency.
+     *
+     * @return The symbol of the base currency.
+     */
     public String getBaseSymbol() {
         return baseSymbol;
     }
 
+    /**
+     * Gets the name of the base currency.
+     *
+     * @return The name of the base currency.
+     */
     public String getBaseCurrency() {
         return baseCurrency;
     }
 
+    /**
+     * Gets the symbol of the target currency.
+     *
+     * @return The symbol of the target currency.
+     */
     public String getTargetSymbol() {
         return targetSymbol;
     }
 
+    /**
+     * Gets the name of the target currency.
+     *
+     * @return The name of the target currency.
+     */
     public String getTargetCurrency() {
         return targetCurrency;
     }
 
+    /**
+     * Gets the formatted result after conversion.
+     *
+     * @return The formatted result after conversion.
+     */
     public String getFormattedResult() {
         return formattedResult;
     }
 
+    /**
+     * Prints the log entry to the console.
+     */
     public void printLog() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("Log ID: " + this.getId());
@@ -71,5 +128,4 @@ public class Log {
                 + this.getTargetCurrency());
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
-
 }
