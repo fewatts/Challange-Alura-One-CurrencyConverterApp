@@ -47,9 +47,10 @@ public class InputOutputService {
 
                 if (option >= 1 && option <= 11)
                     validInput = true;
-                else
+                else{
                     System.out.println("Invalid option. Please enter a");
-                    System.out.println("number between 1 and 10.");
+                    System.out.println("number between 1 and 11.");
+                }
 
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number.");
